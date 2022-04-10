@@ -1,5 +1,5 @@
 # daochoc
-daochoc, zmk config
+daochoc, zmk config, nrfMicro1.4
 
 daochoc資料夾放到 zmk/app/boards/shields/底下
 
