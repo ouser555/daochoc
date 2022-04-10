@@ -1,0 +1,12 @@
+file_format: "1"
+id: daochoc
+name: DaoChoc
+type: shield
+url: https://github.com/omkbd/ErgoDash
+requires: [pro_micro]
+features:
+  - keys
+#  - underglow
+siblings:
+  - daochoc_left
+  - daochoc_right
