@@ -1,28 +1,24 @@
 # daochoc
 daochoc, zmk config, nrfMicro1.4
 
-daochoc資料夾放到 zmk/app/boards/shields/底下
 
 
-執行
+## 操作方式
+* 左右手燒好各自的燒錄檔後(就是出廠設定)可以兩邊同時按Reset鍵，讓兩邊鍵盤自動配對。
 
+  正常情況下左右邊配對好就會一直保持著，除非刻意去改。
+  
+* 不使用TRRS線的設計，即使是USB有線模式，左右手鍵盤通訊還是使用無線。  
 
-west build -d build/left -b nrfmicro_13 -- -DSHIELD=daochoc_left
+* 左邊鍵盤為主鍵盤，只有插左邊USB電腦端才會辨識為鍵盤。
 
+* 左邊鍵盤插著USB即為USB模式，USB斷開即為藍牙模式。
 
-west build -d build/right -b nrfmicro_13 -- -DSHIELD=daochoc_right
+* 可先使用USB模式測試左右鍵盤是否有配對成功。
 
+* 藍牙模式與一般藍牙鍵盤配對使用方式無異。
 
-燒錄檔於
-
-
-zmk/app/build/left
-
-
-zmk/app/build/right
-
-
-* 簡易說明
+## 藍牙配對切換設定簡易說明
   * 此鍵盤預設有四層，default/lower/raise/adjust
   * 右手鍵盤靠拇指的下方三個鍵，為方便說明先稱作，左/中/右。想成是筆電的FN鍵就很好理解。
   * 正常情形下都在DEFAULT層。
@@ -50,6 +46,95 @@ zmk/app/build/right
   * 所以有時候當下的組別與電腦端無法配對時，就可以利用功能鍵清除配對設定，然後就可以重新配對了。
   * 鍵位詳情看keymap檔就可以知道了。
 
+## 更改按鍵映射功能
+  * 目前沒有更改keycode的user interface，只能靠更改程式碼來改變鍵碼。
+  
+  * 可以用文字編輯器打開 ergodash/daochoc/daochoc.keymap 修改需要的鍵碼，然後進行編譯燒錄。
+  
+  * https://github.com/ouser555/daochoc/blob/main/daochoc/daochoc.keymap
+
+## 編譯方式
+ 
+* 1. 先建立ZMK開發環境
+  * 在linux terminal底下，依照官網的說明無腦複製貼上執行幾乎可以完成所有步驟
+  * https://zmk.dev/docs/development/setup
+  * 如果是使用Windows系統，選擇Windows菜單即是Windows的說明，
+  * Windows編譯方式沒實際試過，但應該是不會有問題才是。
+  
+  
+* 2. 將daochoc資料夾
+  * https://github.com/ouser555/daochoc/tree/main/daochoc
+  * 放到ZMK/app/boards/shields/資料夾底下
+  
+  
+  * 此時可以修改自己需要的 daochoc.keymap
+  
+  
+  * 用terminal進到zmk/app/ 後執行
+  
+    * west build -d build/left -b nrfmicro_13 -- -DSHIELD=daochoc_left
+    * west build -d build/right -b nrfmicro_13 -- -DSHIELD=daochoc_right
+  
+  
+  * 成功後燒錄檔會放在
+    * /zmk/app/build/left/zephyr/zmk.uf2
+    * /zmk/app/build/right/zephyr/zmk.uf2
+
+## 燒錄方式
+
+* firmware資料夾內有left、right兩個資料夾，放左右手的燒錄檔(zmk.uf2)，
+  右鍵選擇右上方的RAW按鈕，另存新檔。
+  
+* 鍵盤連接電腦USB後，連按兩下鍵盤上的Reset鍵進入bootloader mode，
+
+  成功會持續閃綠燈，電腦會把鍵盤辨識為一個隨身碟，
+  
+  從我的電腦打開這個隨身碟，把zmk.uf2複製進去，
+  
+  複製完即是燒錄完成，隨身碟會自動退出。
+  
+* 如果上述燒錄步驟正確的話，鍵盤為新的狀態，但之前已配對的資料還是會保留。
+
+## 常見問題
+* Q1:連按兩下Reset鍵進入bootloader模式，綠燈有閃爍，但是沒有辨識成隨身碟。
+
+  A:應該是電腦驅動程式跑掉了。
+  * 解決方式:
+    1. 換USB孔試試看。
+    2. 裝置管理員找到該裝置，重新安裝驅動。
+    3. 重新開機。
 
 
+* Q2:無法和主機成功配對
 
+  A:應該是配對資料錯亂了，或是目前頻道已有其他配對資料。
+  * 解決方式1:
+  
+    * 找到keymap裡面有沒有按鍵被設為 &bt BT_CLR
+    * 按這個鍵可以清除目前鍵盤頻道的配對資料，然後就可以重新配對。
+    
+  * 解決方式2:
+    * 到firmware/nrfmicro_13-settings_reset-zmk/底下，zmk.uf2燒錄檔，一樣用右鍵點RAW按鈕另存新檔。
+    
+      進入bootloader模式，把這個檔案燒進去，重置配對資訊。
+      
+      
+    * 然後再重燒一次左右手的daochoc燒錄檔。
+    
+    
+    * 兩邊燒完後同時按Reset鍵，左右手鍵盤連接後，再與電腦配對應該就可以成功配對。
+
+* Q3:左右邊沒有辦法成功配對
+
+  A:應該是配對資料錯亂了，或是目前頻道已有其他配對資料。
+
+  * 解決方式:
+    * 到firmware/nrfmicro_13-settings_reset-zmk/底下，zmk.uf2燒錄檔，一樣用右鍵點RAW按鈕另存新檔。
+    
+      進入bootloader模式，把這個檔案燒進去，重置配對資訊。
+      
+      
+    * 然後再重燒一次左右手的ergodash燒錄檔。
+    
+    
+    * 兩邊燒完後同時按Reset鍵，應該就可以重新配對。
