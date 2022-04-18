@@ -19,6 +19,10 @@ daochoc, zmk config, nrfMicro1.4
 * 藍牙模式與一般藍牙鍵盤配對使用方式無異。
 
 ## 藍牙配對切換設定簡易說明
+![image](https://github.com/ouser555/daochoc/blob/main/pic/layerdefault.png)
+![image](https://github.com/ouser555/daochoc/blob/main/pic/layerlower.png)
+![image](https://github.com/ouser555/daochoc/blob/main/pic/layerraise.png)
+![image](https://github.com/ouser555/daochoc/blob/main/pic/layeradjust.png)
   * 此鍵盤預設有四層，default/lower/raise/adjust
   * 右手鍵盤靠拇指的下方三個鍵，為方便說明先稱作，左/中/右。想成是筆電的FN鍵就很好理解。
   * 正常情形下都在DEFAULT層。
