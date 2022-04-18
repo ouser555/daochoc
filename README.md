@@ -1,6 +1,6 @@
 # daochoc
 daochoc, zmk config, nrfMicro1.4
-
+![image](https://github.com/ouser555/daochoc/blob/main/pic/ZwHFFmVuw4.png)
 
 
 ## 操作方式
