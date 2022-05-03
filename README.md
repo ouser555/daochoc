@@ -87,7 +87,7 @@ daochoc, zmk config, nrfMicro1.4
 ## 燒錄方式
 
 * firmware資料夾內有left、right兩個資料夾，放左右手的燒錄檔(zmk.uf2)，
-  右鍵選擇右上方的RAW按鈕，另存新檔。
+  左鍵點擊進入後，右上方有download的按鈕，點擊下載。
   
 * 鍵盤連接電腦USB後，連按兩下鍵盤上的Reset鍵進入bootloader mode，
 
@@ -118,7 +118,7 @@ daochoc, zmk config, nrfMicro1.4
     * 按這個鍵可以清除目前鍵盤頻道的配對資料，然後就可以重新配對。
     
   * 解決方式2:
-    * 到firmware/nrfmicro_13-settings_reset-zmk/底下，zmk.uf2燒錄檔，一樣用右鍵點RAW按鈕另存新檔。
+    * 到firmware/nrfmicro_13-settings_reset-zmk/底下，zmk.uf2燒錄檔，一樣點擊download下載。
     
       進入bootloader模式，把這個檔案燒進去，重置配對資訊。
       
@@ -133,7 +133,7 @@ daochoc, zmk config, nrfMicro1.4
   A:應該是配對資料錯亂了，或是目前頻道已有其他配對資料。
 
   * 解決方式:
-    * 到firmware/nrfmicro_13-settings_reset-zmk/底下，zmk.uf2燒錄檔，一樣用右鍵點RAW按鈕另存新檔。
+    * 到firmware/nrfmicro_13-settings_reset-zmk/底下，zmk.uf2燒錄檔，一樣點擊download下載。
     
       進入bootloader模式，把這個檔案燒進去，重置配對資訊。
       
