@@ -84,6 +84,17 @@ daochoc, zmk config, nrfMicro1.4
     * /zmk/app/build/left/zephyr/zmk.uf2
     * /zmk/app/build/right/zephyr/zmk.uf2
 
+
+   ### 補充注意事項
+  * 編譯已編譯過的鍵盤
+    * 之前編譯過的鍵盤，會有一些檔案產生，並且被保留下來。
+    * 這些檔案有時會直接套用在新編譯的鍵盤上，造成有些修改沒有生效，
+    * 所以一般建議編譯時加上-p這個參數，在編譯時可以先清除掉這些檔案。
+      
+    * west build -p -d build/left -b nrfmicro_13 -- -DSHIELD=daochoc_left
+    * west build -p -d build/right -b nrfmicro_13 -- -DSHIELD=daochoc_right
+
+
 ## 燒錄方式
 
 * firmware資料夾內有left、right兩個資料夾，放左右手的燒錄檔(zmk.uf2)，
