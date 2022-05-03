@@ -89,7 +89,7 @@ daochoc, zmk config, nrfMicro1.4
 * firmware資料夾內有left、right兩個資料夾，放左右手的燒錄檔(zmk.uf2)，
   左鍵點擊進入後，右上方有download的按鈕，點擊下載。
   
-* 鍵盤連接電腦USB後，連按兩下鍵盤上的Reset鍵進入bootloader mode，
+* 鍵盤連接電腦USB後，連按兩下鍵盤側面的Reset鍵(電源開關旁邊)進入bootloader mode，
 
   成功會持續閃綠燈，電腦會把鍵盤辨識為一個隨身碟，
   
