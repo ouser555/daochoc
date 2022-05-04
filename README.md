@@ -18,6 +18,10 @@ daochoc, zmk config, nrfMicro1.4
 
 * 藍牙模式與一般藍牙鍵盤配對使用方式無異。
 
+#### 藍牙配對後如果左手有接USB充電，那會變成走USB模式，此時藍牙雖連線著但是不會進行藍牙傳輸，
+
+#### 所以藍牙配對的電腦都沒有辦法輸入，此時把USB充電移除就藍牙可以傳輸了。
+
 ## 藍牙配對切換設定簡易說明
 ![image](https://github.com/ouser555/daochoc/blob/main/pic/layerdefault.png)
 ![image](https://github.com/ouser555/daochoc/blob/main/pic/layerlower.png)
