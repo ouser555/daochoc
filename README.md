@@ -22,6 +22,8 @@ daochoc, zmk config, nrfMicro1.4
 
 #### 所以藍牙配對的電腦都沒有辦法輸入，此時把USB充電移除就藍牙可以傳輸了。
 
+#### 充電時必須將鍵盤的開關打開才可充電
+
 ## 藍牙配對切換設定簡易說明
 ![image](https://github.com/ouser555/daochoc/blob/main/pic/layerdefault.png)
 ![image](https://github.com/ouser555/daochoc/blob/main/pic/layerlower.png)
